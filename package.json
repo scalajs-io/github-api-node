@@ -1,6 +1,6 @@
 {
-  "name": "github-api-node-scalajs",
-  "version": "0.11.2",
+  "name": "github-api-node-sjs",
+  "version": "0.11.2-2",
   "private": true,
   "dependencies": {
     "github-api-node": "^0.11.2",
