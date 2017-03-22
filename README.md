@@ -73,7 +73,7 @@ repo.readAsync(branch = "master", pathToFile = "package.json").future foreach { 
 To add the `GitHub` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "github-api-node" % "0.11.2"
+libraryDependencies += "io.scalajs.npm" %%% "github-api-node" % "0.4.0-pre1"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
