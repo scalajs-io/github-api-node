@@ -1,6 +1,6 @@
 {
   "name": "github-api-node-sjs",
-  "version": "0.4.0-pre1",
+  "version": "0.4.0-pre2",
   "private": true,
   "dependencies": {
     "github-api-node": "^0.11.2",
