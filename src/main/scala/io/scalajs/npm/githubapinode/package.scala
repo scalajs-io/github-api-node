@@ -3,7 +3,7 @@ package io.scalajs.npm
 import io.scalajs.RawOptions
 import io.scalajs.util.PromiseHelper._
 
-import scala.concurrent.Promise
+import scala.concurrent.Future
 import scala.scalajs.js
 
 /**
@@ -28,7 +28,7 @@ package object githubapinode {
       * @return a promise of [[Unit completion]]
       */
     @inline
-    def branchAsync(newBranchName: String): Promise[Unit] = {
+    def branchFuture(newBranchName: String): Future[Unit] = {
       promiseWithError0[GithubError](repo.branch(newBranchName, _))
     }
 
@@ -39,7 +39,7 @@ package object githubapinode {
       * @return a promise of [[Unit completion]]
       */
     @inline
-    def branchAsync(oldBranchName: String, newBranchName: String): Promise[Unit] = {
+    def branchFuture(oldBranchName: String, newBranchName: String): Future[Unit] = {
       promiseWithError0[GithubError](repo.branch(oldBranchName, newBranchName, _))
     }
 
@@ -50,7 +50,7 @@ package object githubapinode {
       * @return a promise of the [[Content contents]]
       */
     @inline
-    def contentsAsync(branch: String, pathToDir: String): Promise[js.Array[Content]] = {
+    def contentsFuture(branch: String, pathToDir: String): Future[js.Array[Content]] = {
       promiseWithError1[GithubError, js.Array[Content]](repo.contents(branch, pathToDir, _))
     }
 
@@ -59,7 +59,7 @@ package object githubapinode {
       * @return a promise of the [[Contributor contributors]]
       */
     @inline
-    def contributorsAsync: Promise[js.Array[Contributor]] = {
+    def contributorsFuture: Future[js.Array[Contributor]] = {
       promiseWithError1[GithubError, js.Array[Contributor]](repo.contributors)
     }
 
@@ -70,7 +70,7 @@ package object githubapinode {
       * @return a promise of the [[Commit commit]]
       */
     @inline
-    def getCommitAsync(branch: String, sha: String): Promise[Commit] = {
+    def getCommitFuture(branch: String, sha: String): Future[Commit] = {
       promiseWithError1[GithubError, Commit](repo.getCommit(branch, sha, _))
     }
 
@@ -80,7 +80,7 @@ package object githubapinode {
       * @return a promise of the array of [[CommitStatus commit statuses]]
       */
     @inline
-    def getStatusesAsync(sha: String): Promise[js.Array[CommitStatus]] = {
+    def getStatusesFuture(sha: String): Future[js.Array[CommitStatus]] = {
       promiseWithError1[GithubError, js.Array[CommitStatus]](repo.getStatuses(sha, _))
     }
 
@@ -91,7 +91,7 @@ package object githubapinode {
       * @return the completion callback
       */
     @inline
-    def isStarredAsync(owner: String, repository: String): Promise[Boolean] = {
+    def isStarredFuture(owner: String, repository: String): Future[Boolean] = {
       promiseWithError1[GithubError, Boolean](repo.isStarred(owner, repository, _))
     }
 
@@ -100,7 +100,7 @@ package object githubapinode {
       * @return a promise of the array of [[Branch branches]]
       */
     @inline
-    def listBranchesAsync: Promise[js.Array[String]] = {
+    def listBranchesFuture: Future[js.Array[String]] = {
       promiseWithError1[GithubError, js.Array[String]](repo.listBranches)
     }
 
@@ -111,7 +111,7 @@ package object githubapinode {
       * @return a promise of the content
       */
     @inline
-    def readAsync(branch: String, pathToFile: String): Promise[js.Any] = {
+    def readFuture(branch: String, pathToFile: String): Future[js.Any] = {
       promiseWithError1[GithubError, js.Any](repo.read(branch, pathToFile, _))
     }
 
@@ -122,7 +122,7 @@ package object githubapinode {
       * @return a promise of [[Unit completion]]
       */
     @inline
-    def removeAsync(branch: String, pathToFile: String): Promise[Unit] = {
+    def removeFuture(branch: String, pathToFile: String): Future[Unit] = {
       promiseWithError0[GithubError](repo.remove(branch, pathToFile, _))
     }
 
@@ -131,7 +131,7 @@ package object githubapinode {
       * @return a promise of a [[Repository]]
       */
     @inline
-    def showAsync: Promise[Repository] = promiseWithError1[GithubError, Repository](repo.show)
+    def showFuture: Future[Repository] = promiseWithError1[GithubError, Repository](repo.show)
 
     /**
       * Store content at a certain path. If the file specified in the path exists, the content is updated.
@@ -145,11 +145,11 @@ package object githubapinode {
       * @return a promise of [[Unit completion]]
       */
     @inline
-    def writeAsync(branch: String,
+    def writeFuture(branch: String,
                    pathToFile: String,
                    contents: String,
                    commitMessage: String,
-                   options: RawOptions): Promise[Unit] = {
+                   options: RawOptions): Future[Unit] = {
       promiseWithError0[GithubError](repo.write(branch, pathToFile, contents, commitMessage, options, _))
     }
 
@@ -166,7 +166,7 @@ package object githubapinode {
       * @return the array of organizations
       */
     @inline
-    def orgsAsync: Promise[js.Array[Organization]] = {
+    def orgsFuture: Future[js.Array[Organization]] = {
       promiseWithError1[GithubError, js.Array[Organization]](user.orgs)
     }
 
@@ -177,7 +177,7 @@ package object githubapinode {
       * @return the array of repositories
       */
     @inline
-    def reposAsync(options: RawOptions = null): Promise[js.Array[Repository]] = {
+    def reposFuture(options: RawOptions = null): Future[js.Array[Repository]] = {
       promiseWithError1[GithubError, js.Array[Repository]](user.repos(options, _))
     }
 

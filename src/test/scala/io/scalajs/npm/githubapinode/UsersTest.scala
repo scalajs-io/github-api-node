@@ -16,13 +16,13 @@ class UsersTest extends FunSpec {
     val user = gitHub.getUser()
 
     it("supports listing organizations the authenticated user belongs to.") {
-      user.orgsAsync.future foreach { orgs =>
+      user.orgsFuture foreach { orgs =>
         info(s"orgs: ${orgs.toJson}")
       }
     }
 
     it("supports listing repositories of the authenticated user.") {
-      user.reposAsync().future foreach { repos =>
+      user.reposFuture() foreach { repos =>
         info(s"repos: ${repos.toJson}")
       }
     }

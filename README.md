@@ -48,22 +48,22 @@ val gitHub = new GitHub(new GithubOptions())
 val repo = gitHub.getRepo("scalajs-io", "bignum")
 
 // list the branches in the repo
-repo.listBranchesAsync.future foreach { branches =>
+repo.listBranchesFuture foreach { branches =>
   println(s"branches: ${branches.toJson}")
 }
 
 // list the contributors to the repo  
-repo.contributorsAsync.future foreach { contributors =>
+repo.contributorsFuture foreach { contributors =>
   println(s"contributors: ${Util.inspect(contributors)}")
 }
 
 // retrieve the contents of the master branch
-repo.contentsAsync(branch = "master", pathToDir = ".").future foreach { contents =>
+repo.contentsFuture(branch = "master", pathToDir = ".") foreach { contents =>
   println(s"contents: ${Util.inspect(contents)}")
 }
 
 // asynchronously read the contents of a file in the repo's master branch
-repo.readAsync(branch = "master", pathToFile = "package.json").future foreach { data =>
+repo.readFuture(branch = "master", pathToFile = "package.json") foreach { data =>
   println(s"package.json: ${Util.inspect(data)}")
 }
 ```
@@ -73,7 +73,7 @@ repo.readAsync(branch = "master", pathToFile = "package.json").future foreach { 
 To add the `GitHub` binding to your project, add the following to your build.sbt:  
 
 ```sbt
-libraryDependencies += "io.scalajs.npm" %%% "github-api-node" % "0.4.0-pre4"
+libraryDependencies += "io.scalajs.npm" %%% "github-api-node" % "0.4.0-pre5"
 ```
 
 Optionally, you may add the Sonatype Repository resolver:
