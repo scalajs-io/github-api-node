@@ -1,7 +1,7 @@
 package io.scalajs.npm.githubapinode
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * GitHub Optional Settings
@@ -11,7 +11,7 @@ import scala.scalajs.js.annotation.ScalaJSDefined
   * @param auth     a GitHub authorization
   * @param apiUrl   a GitHub authorization url
   */
-@ScalaJSDefined
+
 class GithubOptions(val username: js.UndefOr[String] = js.undefined,
                     val password: js.UndefOr[String] = js.undefined,
                     val token: js.UndefOr[String] = js.undefined,

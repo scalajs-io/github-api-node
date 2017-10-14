@@ -1,13 +1,13 @@
 package io.scalajs.npm.githubapinode
 
 import scala.scalajs.js
-import scala.scalajs.js.annotation.ScalaJSDefined
+
 
 /**
   * Represents an individual GitHub Repository Object
   * @author lawrence.daniels@gmail.com
   */
-@ScalaJSDefined
+
 class Repository(var id: js.UndefOr[Int] = js.undefined,
                  var name: js.UndefOr[String] = js.undefined,
                  var full_name: js.UndefOr[String] = js.undefined,
